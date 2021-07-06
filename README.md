@@ -21,4 +21,4 @@ Property/House Buying & Selling website Using React in the front-end, Firebase a
 ## Contact
 - [Send mail](mailto:codemergers.org@gmail.com) to code mergers.
 
-#### Thank you for visiting
+#### Thank you for visiting :)
