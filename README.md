@@ -4,7 +4,7 @@ Property/House Buying & Selling website Using React in the front-end, Firebase a
 ## Deployement
 - Visit [deployed site](https://housify-codemergers.netlify.app/)
   
-## Video Tutorial - 
+## [Video Tutorial](https://youtu.be/sWEcSv6vKzE)
 
 ## How to use intelligent price prediction in the website - 
 - Due to some problems while deployment, the flask server is not yet deployed, it has to be started in a localhost in your machine to use price prediction. We are working on the problem.
@@ -14,7 +14,7 @@ Property/House Buying & Selling website Using React in the front-end, Firebase a
 - After these Commands run python app.py in terminal, this will start your server at port 5000(Local Host). 
 - Now go to the [deployed site](https://housify-codemergers.netlify.app/) and you can get predicted price for your property. 
 - There was a problem with the CORS policy, we are working on it, so to enable CORS for your browser install [this](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc#:~:text=Moesif%20Origin%20%26%20CORS%20Changer&text=This%20plugin%20allows%20you%20to%20send%20cross%2Ddomain%20requests.&text=This%20plugin%20allows%20you%20to%20send%20cross%2Ddomain%20requests%20directly,Allow%2DOrigin%20set%20to%20*.) extension.
-- <b>Visit the video tutorial to know how the website works. - </b> 
+- <b>Visit the [video tutorial](https://youtu.be/sWEcSv6vKzE) to know how the website works. - </b> 
   
 ## License
 - Distributed under the MIT License. See `LICENSE` for more information.
