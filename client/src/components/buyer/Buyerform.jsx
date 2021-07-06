@@ -49,7 +49,7 @@ class BuyerForm extends Component {
                             alt="image"
                             className="card-img-top"
                             width="100%"
-                            height="700px"
+                            height="600px"
                         />
                     </div>
                     <div className="card-body text-dark text-center">
