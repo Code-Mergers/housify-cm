@@ -1,19 +1,14 @@
 import React, {Component} from "react";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import Navigation from './Navigation';
+import Navigation from '../Navigation';
 import { Button, Form, InputGroup } from "react-bootstrap";
-import Footer, { getFullLocalTime } from './Footer';
-import locations from './location';
-import { db, storage, auth } from '../firebase/firebase';
+import Footer, { getFullLocalTime } from '../Footer';
+import { db, storage, auth } from '../../firebase/firebase';
 import Axios from 'axios';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -285,7 +280,7 @@ class SellerForm extends Component {
                                     autoComplete="off"
                                     multiline
                                     rows={4}
-                                    inputProps={{ maxLength: 50 }}
+                                    inputProps={{ maxLength: 200 }}
                                     onChange={event =>
                                         this.setState({ text: event.target.value })
                                     }
