@@ -8,8 +8,7 @@ class Cards extends Component{
     state={
         load: false,
         properties: null
-    }
-     
+    }     
     componentWillMount() {   
         db.ref('properties').once('value').then(snapshot => {
             this.setState({
@@ -26,7 +25,7 @@ class Cards extends Component{
             this.setState({
                 load: true
             })
-        }, 2000)
+        }, 3000)
     }
 
     render(){
