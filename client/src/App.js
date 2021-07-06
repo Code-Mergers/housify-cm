@@ -11,7 +11,7 @@ import LandingPage from "./components/Landing";
 import withAuthentication from "./components/withAuthentication";
 import { auth } from './firebase/firebase';
 import SellerForm from './components/seller/Sellerform';
-import BuyerForm from './components/Buyerform';
+import BuyerForm from './components/buyer/Buyerform';
 import IssuePage from './components/Issue';
 
 const App = () => (
