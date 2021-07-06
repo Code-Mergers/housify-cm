@@ -280,7 +280,7 @@ class SellerForm extends Component {
                                     autoComplete="off"
                                     multiline
                                     rows={4}
-                                    inputProps={{ maxLength: 50 }}
+                                    inputProps={{ maxLength: 200 }}
                                     onChange={event =>
                                         this.setState({ text: event.target.value })
                                     }
