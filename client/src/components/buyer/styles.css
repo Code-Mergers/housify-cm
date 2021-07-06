@@ -1,0 +1,47 @@
+.headingText{
+    font-size: 2.5rem !important;
+    text-decoration: underline;
+    border-style: solid;
+    border-width: 5px !important;
+    border-color: #000 !important;
+    border-radius: 20px !important;
+}
+
+.buyerImg{
+    border-radius: 20px;
+}
+
+.areaText{
+    align-items: center;
+    text-align: center;
+}
+.commentText{
+    align-items: center;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.rowCol{
+    border-style: solid;
+    border-width: 5px !important;
+    border-color: #007bff !important;
+    border-radius: 20px !important;
+}
+
+.col1{
+    left:5%;
+}
+.col2{
+    left:20%;
+}
+
+@media (max-width: 720px) {
+    .col1{
+        left:0px;
+        text-align: center;
+    }
+    .col2{
+        left:0px;
+        text-align: center;
+    }
+}
