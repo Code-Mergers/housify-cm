@@ -1,15 +1,29 @@
 import React, {Component} from "react";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import Navigation from '../Navigation';
-import { Container, Button, Form, InputGroup } from "react-bootstrap";
-import Footer, { getFullLocalTime } from '../Footer';
+import Navigation from './Navigation';
+import { Button, Form, InputGroup } from "react-bootstrap";
+import Footer, { getFullLocalTime } from './Footer';
 import locations from './location';
-import { db, storage, auth } from '../../firebase/firebase';
+import { db, storage, auth } from '../firebase/firebase';
 import Axios from 'axios';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import loc from './location.js';
+import { Container } from "@material-ui/core";
+
 const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value
-});  
+});
 
 const INITIAL_STATE = {
     name: "",
@@ -31,7 +45,6 @@ class SellerForm extends Component {
     state = {
         ...INITIAL_STATE
     }
-   
   
     onSubmit = event => {
         db.ref('users/'+ auth.currentUser.uid).once('value').then(snapshot => {
@@ -101,6 +114,8 @@ class SellerForm extends Component {
     };
 
     render() {
+        console.log(this.state);
+        const { classes } = this.props;
         const isInvalid = this.state.area === "" ||
         this.state.image === null ||
         this.state.bhk === "" ||
@@ -116,46 +131,41 @@ class SellerForm extends Component {
         return (
 		    <>
                 <Navigation />
-                    <Container className="main-margin-top">
-                        <center>
-                            <div className="inputclass">
-                                <h2 id="mytexth2">Enlist Property</h2>
-                                <p>Please fill in all the fields before submitting</p>
-                                <br/>
-                                <Form onSubmit={this.onSubmit}>
-                                    <InputGroup className="inputtext">
-                                        <InputGroup.Prepend className="inputlabel">Name: </InputGroup.Prepend>
-                                        <Form.Control
-                                            type="text"
-                                            name="name"
-                                            id="inputtext"
-                                            placeholder=" Property Name"
-                                            value={this.state.name}
-                                            autoFocus
-                                            required
-                                            onChange={e =>
-                                            this.setState(byPropKey("name", e.target.value))
-                                            }
-                                        />
-                                    </InputGroup>
-                                    <br/>
-                                    <InputGroup className="inputtext">
-                                    <InputGroup.Prepend className="inputlabel">Area: </InputGroup.Prepend>
-                                    <Form.Control
-                                        type="text"
-                                        name="name"
-                                        id="inputtext"
-                                        placeholder=" Sq ft"
-                                        value={this.state.area}
-                                        autoFocus
-                                        required
-                                        onChange={e =>
+                    <Container className="main-margin-top" component="main" maxWidth="xs">
+                        <CssBaseline/>
+                        <div className={classes.paper}>
+                            <h2 id="mytexth2">Enlist Property</h2>
+                            <p>Please fill in all the fields before submitting</p>
+                            <br/>
+                            <form className={classes.form} onSubmit={e => this.onSubmit(e)}>
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="name"
+                                    label="Property Name"
+                                    name="text"
+                                    autoComplete="off"
+                                    autoFocus
+                                    onChange={e =>
+                                        this.setState(byPropKey("name", e.target.value))
+                                    }
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="area"
+                                    label="Area"
+                                    name="text"
+                                    autoComplete="off"
+                                    onChange={e =>
                                         this.setState(byPropKey("area", e.target.value))
-                                        }
-                                    />
-                                    </InputGroup>
-                                    <br/>
-                                    <InputGroup className="inputtext">
+                                    }
+                                />
+                                <InputGroup className="inputtext">
                                     <Form.Label className="inputlabel">BHK: </Form.Label>
                                     <Form.Check
                                         className="inputradio"
@@ -201,7 +211,6 @@ class SellerForm extends Component {
                                     <br/>
                                     <InputGroup className="inputtext">
                                     <Form.Label className="inputlabel">Bath: </Form.Label>
-                                    <br/>
                                     <Form.Check
                                         className="inputradio"
                                         label="1"
@@ -243,84 +252,93 @@ class SellerForm extends Component {
                                         onChange={e => this.setState(byPropKey("bathroom", e.target.value))}
                                     />
                                     </InputGroup>
-                                    <br/>
-                                    <InputGroup style={{textAlign: "center"}}>
-                                        <InputGroup.Prepend className="inputlabel">Location: </InputGroup.Prepend>
-                                        <Form.Control as="select" 
-                                        id="inputtext"
-                                        defaultValue="Select Location"
-                                        onChange={e => this.setState(byPropKey("location", e.target.value))}
-                                        >
-                                            {
-                                                locations.map((oneLocation, index )=> {
-                                                    return <option key={index} value={oneLocation}>
-                                                        {oneLocation}
-                                                    </option>
-                                                })
-                                            }
-                                        </Form.Control>
-                                    </InputGroup>
-                                    <br/>
-                                    <InputGroup>
-                                        <Form.Control
-                                        as="textarea"
-                                        id="chat-text-area"
-                                        placeholder="Describe your property"
-                                        value={this.state.text}
-                                        required
-                                        onChange={event =>
-                                            this.setState({ text: event.target.value })
-                                        }
-                                        style={{ height: "150px" }}
-                                        />
-                                    </InputGroup>
-                                    <br/>
-                                    <div className="custom-file" style={{
-                                        margin: "10px 0", width: "100%" }}>
-                                        
-                                        <p>{this.state.message}</p>
-                                        <label className="custom-file-upload" for="customFile" id="upload-input"
-                                            style={this.state.styleUpload}
-                                        >
+                                <div className={classes.formControl}>
+                                    <div>
+                                        <Typography className={classes.locationTag}>
+                                            Select Location :
+                                        </Typography>
+                                    </div>
+                                    <div>
+                                    <FormControl
+                                        className={classes.formSelect}>
                                             
-                                            { this.state.image === null ? 
-                                                <i className="fa fa-cloud-upload" /> : <p>{this.state.image.name}</p> }
-                                                <input type="file" className="custom-file-input " id="customFile"
-                                                onChange={event => this.onImageChange(event) }
-                                                accept="image/x-png,image/jpeg,image/jpg"
-                                                />
-                                        </label>
+                                        <InputLabel>Locations</InputLabel>
+                                        <Select
+                                        onChange={e => this.setState(byPropKey("location", e.target.value))}
+                                        style={{minWidth:'120px'}}>
+                                            {loc.map((val, index ) =>  
+                                            <MenuItem
+                                            key={index} 
+                                            
+                                            value={val}>{val}</MenuItem>)}
+                                        </Select>
+                                    </FormControl>
                                     </div>
-                                    <div className="text-center">
-                                    <Button disabled={isInvalid2} onClick={()=>{
-                                         let bodyFormData = new FormData();
-                                         bodyFormData.append('total_sqft', Number(this.state.area));
-                                         bodyFormData.append('location',this.state.location); 
-                                         bodyFormData.append('bhk',Number(this.state.bhk)); 
-                                         bodyFormData.append('bath',Number(this.state.bathroom)); 
-                                         Axios({
-                                             method: "post",
-                                             url: "http://127.0.0.1:5000/predict_home_price",
-                                             data: bodyFormData,
-                                             headers: { "Content-Type": "multipart/form-data" },
-                                           })
-                                             .then((response) => {
-                                               //handle success
-                                               this.setState({price: response.data.estimated_price})
-                                             })
-                                             .catch((response) =>{
-                                               //handle error
-                                               console.log(response);
-                                             });
-                                    }} type="button" id="mybutton">
-                                       Predict Price
-                                    </Button>
-                                    </div>
-                                    <InputGroup>
-                                    <InputGroup.Prepend className="inputlabel">Price in Lakhs: </InputGroup.Prepend>
+                                </div>
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                    id="textComment"
+                                    label="Describe Property... (Max 200 chars)"
+                                    name="text"
+                                    autoComplete="off"
+                                    multiline
+                                    rows={4}
+                                    inputProps={{ maxLength: 50 }}
+                                    onChange={event =>
+                                        this.setState({ text: event.target.value })
+                                    }
+                                >
+                                </TextField>
+                                <center>
+                                <div className="custom-file" style={{
+                                    margin: "10px 0", width: "100%" }}>
+                                    <p>{this.state.message}</p>
+                                    <label className="custom-file-upload" for="customFile" id="upload-input"
+                                        style={this.state.styleUpload}
+                                    >
+                                        { this.state.image === null ?
+                                            <i className="fa fa-cloud-upload" /> : <p>{this.state.image.name}</p> }
+                                            <input type="file" className="custom-file-input " id="customFile"
+                                            onChange={event => this.onImageChange(event) }
+                                            accept="image/x-png,image/jpeg,image/jpg"
+                                            />
+                                    </label>
+                                </div>
+                                </center>
+                                <br/>
+                                <div className="text-center">
+                                <Button disabled={isInvalid2} onClick={()=>{
+                                    let bodyFormData = new FormData();
+                                    bodyFormData.append('total_sqft', Number(this.state.area));
+                                    bodyFormData.append('location',this.state.location); 
+                                    bodyFormData.append('bhk',Number(this.state.bhk)); 
+                                    bodyFormData.append('bath',Number(this.state.bathroom)); 
+                                    Axios({
+                                        method: "post",
+                                        url: "http://127.0.0.1:5000/predict_home_price",
+                                        data: bodyFormData,
+                                        headers: { "Content-Type": "multipart/form-data" },
+                                    })
+                                    .then((response) => {
+                                    //handle success
+                                    this.setState({price: response.data.estimated_price})
+                                    })
+                                    .catch((response) =>{
+                                    //handle error
+                                    console.log(response);
+                                    });
+                                }} type="button" id="mybutton">
+                                    Predict Price
+                                </Button>
+                                </div>
+                                <br/>
+                                <InputGroup>
+                                    <InputGroup.Prepend className="inputlabel">Price(Lakhs): </InputGroup.Prepend>
                                     <Form.Control
                                         id="inputtext"
-                                        type="type"
+                                            type="type"
                                         name="password"
                                         placeholder="Estimated Price"
                                         value={this.state.price}
@@ -328,17 +346,16 @@ class SellerForm extends Component {
                                         onChange={e =>
                                         this.setState(byPropKey("price", e.target.value))
                                         }
-                                        />
-                                    </InputGroup>
-                                    <br/>
-                                    <div className="text-center">
+                                    />
+                                </InputGroup>
+                                <br/>
+                                <div className="text-center">
                                     <Button disabled={isInvalid} type="submit" id="mybutton">
                                         Enlist Details
                                     </Button>
-                                    </div>
-                                </Form>
-                            </div>
-                        </center>
+                                </div>
+                            </form>
+                        </div>
                     </Container>
                     <br/>
                 <Footer />

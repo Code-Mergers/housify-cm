@@ -12,12 +12,11 @@ class Cards extends Component{
     componentWillMount() {   
         db.ref('properties').once('value').then(snapshot => {
             this.setState({
-                properties: Object.entries(snapshot.val()),
+                properties: Object.entries(snapshot.val())
             })
             // console.log(Object.entries(snapshot.val()));
             this.loadFinish(); 
-        })
-        
+        })  
     }
 
     loadFinish() {
@@ -25,7 +24,7 @@ class Cards extends Component{
             this.setState({
                 load: true
             })
-        }, 3000)
+        }, 5000)
     }
 
     render(){
