@@ -1,0 +1,128 @@
+.cardContainer{
+    border-style: solid;
+    border-color: #007bff;
+    border-radius: 20px;
+    border-width: 3px;
+}
+
+.cardImg{
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
+.cardBody{
+    padding-top: 7px !important;
+}
+
+.titleText{
+    border-style: solid;
+    border-color: #ae34eb;
+    border-radius: 20px;
+    color:#000;
+}
+
+.cardBodyText{
+    color: black;
+    padding:7px 13px;
+    font-size: 1rem;
+}
+
+.cardBtn1 {
+    background: #ffbd00;
+    width: 50%;
+    font-family: Mitr, sans-serif;
+    text-transform: inherit !important;
+    padding: 22px 32px;
+    color: #ffffff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    border-radius: 0;
+    line-height: 1;
+    line-height: 0;
+    cursor: pointer;
+    -moz-user-select: none;
+    transition: color .4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden
+}
+
+.cardBtn1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 102%;
+    height: 102%;
+    background: red;
+    z-index: 1;
+    border-radius: 0;
+    transition: transform .5s;
+    transition-timing-function: ease;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(.5, 1.6, .4, .7);
+    transform: scaleX(0);
+    border-radius: 0
+}
+
+.cardBtn1:hover {
+    color: #ffffff !important;
+}
+
+.cardBtn1:hover::before {
+    transform: scaleX(1);
+    z-index: -1
+}
+
+.cardBtn2 {
+    background: blue;
+    width: 50%;
+    font-family: Mitr, sans-serif;
+    text-transform: inherit !important;
+    padding: 22px 32px;
+    color: #fff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    border-radius: 0;
+    line-height: 1;
+    line-height: 0;
+    cursor: pointer;
+    -moz-user-select: none;
+    transition: color .4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden
+}
+
+.cardBtn2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 102%;
+    height: 102%;
+    background: #ec583a;
+    z-index: 1;
+    border-radius: 0;
+    transition: transform .5s;
+    transition-timing-function: ease;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(.5, 1.6, .4, .7);
+    transform: scaleX(0);
+    border-radius: 0
+}
+
+.cardBtn2:hover {
+    color: #fff !important
+}
+
+.cardBtn2:hover::before {
+    transform: scaleX(1);
+    z-index: -1
+}

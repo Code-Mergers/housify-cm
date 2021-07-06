@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="img/png" href="/icon.ico"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Components/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
+    <title>404 Error</title>
+  </head>
+  <body>
+    <div>
+        <div class="mainbox">
+            <div class="err">
+                <h1>4</h1>
+                <img id="fas" src="/question-circle-solid.svg" alt="?">
+                <h1>4</h1>
+            </div>
+            <div class="msg">
+                Maybe this page moved? Got deleted?
+                <br> 
+                Never existed in the first place?
+                <br>
+                Let's go <a href="https://housify-codemergers.netlify.app/">home</a> and try from there.</div>
+            </div>
+        <div>
+    <style>
+        body {
+            background-color:aliceblue;
+        }
+        .mainbox {
+            position: relative;
+            margin: 4rem auto;
+            width: 50%;
+        }
+        .err {
+            margin: 0 auto;
+            color: black;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 3rem;
+            display: flex;
+            justify-content: center;
+        }
+        .err h1 {
+            margin: 0 1rem;
+            font-size: 10rem;
+        }
+        #fas {
+            margin: auto 0.8rem;
+            height: 8rem;
+            animation: spin 3s linear 0s infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            100% {
+                transform: rotateZ(-360deg);
+            }
+        }
+        .msg {
+            margin: 2rem auto;
+            text-align: center;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.6rem;
+            width: 100%;
+        }
+        a {
+            font-size: 1.6rem;
+            text-decoration: none;
+            color:crimson;
+        }
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .mainbox {
+                margin: 10rem auto;
+                width: 90%;
+            }
+            .err h1 {
+                margin: 0.4rem;
+                font-size: 6rem;
+            }
+            #fas {
+                margin: auto 0.6rem;
+                height: 5rem;
+            }
+            .msg, a {
+                margin: 3rem 0;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+  </body>
+    
