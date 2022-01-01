@@ -5,6 +5,7 @@ Property/House Buying & Selling website Using React in the front-end, Firebase a
 - Visit [deployed site](https://housify-codemergers.netlify.app/)
   
 ## Video Tutorial - 
+- [Tutorial-1](https://www.youtube.com/watch?v=sWEcSv6vKzE&t=13s)
 
 ## How to use intelligent price prediction in the website - 
 - Due to some problems while deployment, the flask server is not yet deployed, it has to be started in a localhost in your machine to use price prediction. We are working on the problem.
